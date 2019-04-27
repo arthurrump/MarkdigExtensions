@@ -4,10 +4,12 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <OutputType>Exe</OutputType>
     <IsPackable>false</IsPackable>
+    <GenerateProgramFile>false</GenerateProgramFile>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Include="UrlRewriterTests.fs" />
+    <Compile Include="Runner.fs" />
   </ItemGroup>
 
   <ItemGroup>
