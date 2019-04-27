@@ -3,7 +3,6 @@
 open Expecto
 
 open Markdig
-open Markdig.Extensions.UrlRewriter
 
 [<Tests>]
 let tests =

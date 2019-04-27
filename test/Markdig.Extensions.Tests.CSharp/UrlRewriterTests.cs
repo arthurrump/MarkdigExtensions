@@ -1,4 +1,3 @@
-using Markdig.Extensions.UrlRewriter;
 using Xunit;
 
 namespace Markdig.Extensions.Tests.CSharp

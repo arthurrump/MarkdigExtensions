@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Compile Include="UrlRewriter.fs" />
+    <Compile Include="Extension.fs" />
   </ItemGroup>
 
 </Project>
