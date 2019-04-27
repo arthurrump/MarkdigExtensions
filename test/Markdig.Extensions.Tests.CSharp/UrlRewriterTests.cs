@@ -23,5 +23,18 @@ namespace Markdig.Extensions.Tests.CSharp
             Assert.Contains("http://example.com", html);
             Assert.DoesNotContain("https://example.com", html);
         }
+
+        [Fact]
+        public void RewriteToHttps()
+        {
+            var pipeline = new MarkdownPipelineBuilder()
+                .UseUrlRewriter(link => link.Url.Replace("http://", "https://"))
+                .Build();
+
+            var markdown = "[Anchor](http://example.net), ![Image](http://example.com/img.png)";
+            var html = Markdown.ToHtml(markdown, pipeline);
+            var expected = "<p><a href=\"https://example.net\">Anchor</a>, <img src=\"https://example.com/img.png\" alt=\"Image\" /></p>\n";
+            Assert.Equal(expected, html);
+        }
     }
 }
