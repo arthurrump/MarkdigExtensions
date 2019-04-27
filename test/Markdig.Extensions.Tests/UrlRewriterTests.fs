@@ -10,14 +10,12 @@ open Markdig.Syntax.Inlines
 let tests =
     testList "UrlRewrite" [
         test "Rewrites all urls" {
-            let rewriter (link : LinkInline) =
-                if link.Url.StartsWith("https://") 
-                then "https://example.net"
-                else link.Url
-
             let pipeline =
                 MarkdownPipelineBuilder()
-                    .UseUrlRewriter(rewriter)
+                    .UseUrlRewriter(fun link ->
+                        if link.Url.StartsWith("https://") 
+                        then "https://example.net"
+                        else link.Url)
                     .Build()
 
             let markdown = "[Test1](https://example.com), [Test2](http://example.com)"
