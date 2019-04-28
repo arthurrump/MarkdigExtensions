@@ -4,6 +4,8 @@
 Some useful extensions to the [Markdig](https://github.com/lunet-io/markdig) Markdown processor.
 
 ## MarkdigExtensions.UrlRewriter
+[![NuGet](https://img.shields.io/nuget/v/MarkdigExtensions.UrlRewriter.svg)](https://www.nuget.org/packages/MarkdigExtensions.UrlRewriter/)
+
 Allows you to rewrite URLs in link and image tags. It's reason for existence was the need to convert local image paths to a path on the webserver, but it's flexible enough to rewrite any link or image URL.
 
 ### Example
