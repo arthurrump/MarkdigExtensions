@@ -1,4 +1,4 @@
-﻿namespace Markdig.Extensions.UrlRewriter
+﻿namespace MarkdigExtensions.UrlRewriter
 
 open Markdig
 open Markdig.Parsers

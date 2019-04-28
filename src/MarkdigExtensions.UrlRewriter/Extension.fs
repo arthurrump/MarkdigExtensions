@@ -1,6 +1,6 @@
 ﻿namespace Markdig
 
-open Markdig.Extensions.UrlRewriter
+open MarkdigExtensions.UrlRewriter
 open System.Runtime.CompilerServices
 
 [<Extension>]

@@ -12,9 +12,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Markdig.Extensions.ImageAsFigure\Markdig.Extensions.ImageAsFigure.fsproj" />
-    <ProjectReference Include="..\..\src\Markdig.Extensions.SyntaxHighlighting\Markdig.Extensions.SyntaxHighlighting.fsproj" />
-    <ProjectReference Include="..\..\src\Markdig.Extensions.UrlRewriter\Markdig.Extensions.UrlRewriter.fsproj" />
+    <ProjectReference Include="..\..\src\MarkdigExtensions.ImageAsFigure\MarkdigExtensions.ImageAsFigure.fsproj" />
+    <ProjectReference Include="..\..\src\MarkdigExtensions.SyntaxHighlighting\MarkdigExtensions.SyntaxHighlighting.fsproj" />
+    <ProjectReference Include="..\..\src\MarkdigExtensions.UrlRewriter\MarkdigExtensions.UrlRewriter.fsproj" />
   </ItemGroup>
 
 </Project>

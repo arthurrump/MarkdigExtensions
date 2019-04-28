@@ -1,4 +1,4 @@
-﻿namespace Markdig.Extensions.ImageAsFigure
+﻿namespace MarkdigExtensions.ImageAsFigure
 
 module Say =
     let hello name =

@@ -5,17 +5,17 @@ VisualStudioVersion = 16.0.28803.202
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8449D885-BD01-4A90-B7C6-3839D57961F8}"
 EndProject
-Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Markdig.Extensions.ImageAsFigure", "src\Markdig.Extensions.ImageAsFigure\Markdig.Extensions.ImageAsFigure.fsproj", "{E620C63C-08CF-4551-8EC5-9070861C6A63}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "MarkdigExtensions.ImageAsFigure", "src\MarkdigExtensions.ImageAsFigure\MarkdigExtensions.ImageAsFigure.fsproj", "{E620C63C-08CF-4551-8EC5-9070861C6A63}"
 EndProject
-Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Markdig.Extensions.SyntaxHighlighting", "src\Markdig.Extensions.SyntaxHighlighting\Markdig.Extensions.SyntaxHighlighting.fsproj", "{915038AC-B25E-4470-9C2D-04A891D40264}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "MarkdigExtensions.SyntaxHighlighting", "src\MarkdigExtensions.SyntaxHighlighting\MarkdigExtensions.SyntaxHighlighting.fsproj", "{915038AC-B25E-4470-9C2D-04A891D40264}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{C4962389-7F7E-4527-BEF9-7F5916161034}"
 EndProject
-Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Markdig.Extensions.Tests", "test\Markdig.Extensions.Tests\Markdig.Extensions.Tests.fsproj", "{96482752-1E5B-4E8A-9BB9-98C915A51151}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "MarkdigExtensions.Tests", "test\MarkdigExtensions.Tests\MarkdigExtensions.Tests.fsproj", "{96482752-1E5B-4E8A-9BB9-98C915A51151}"
 EndProject
-Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Markdig.Extensions.UrlRewriter", "src\Markdig.Extensions.UrlRewriter\Markdig.Extensions.UrlRewriter.fsproj", "{B866341E-D84C-42F5-8235-AE881BD35035}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "MarkdigExtensions.UrlRewriter", "src\MarkdigExtensions.UrlRewriter\MarkdigExtensions.UrlRewriter.fsproj", "{B866341E-D84C-42F5-8235-AE881BD35035}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Markdig.Extensions.Tests.CSharp", "test\Markdig.Extensions.Tests.CSharp\Markdig.Extensions.Tests.CSharp.csproj", "{1DF9E7D5-6CCD-4077-98CF-66199EB35113}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarkdigExtensions.Tests.CSharp", "test\MarkdigExtensions.Tests.CSharp\MarkdigExtensions.Tests.CSharp.csproj", "{1DF9E7D5-6CCD-4077-98CF-66199EB35113}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

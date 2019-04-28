@@ -1,4 +1,4 @@
-﻿module Markdig.Extensions.Tests
+﻿module Runner
 
 open Expecto
 

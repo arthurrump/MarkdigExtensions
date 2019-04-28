@@ -1,4 +1,4 @@
-﻿namespace Markdig.Extensions.SyntaxHighlighting
+﻿namespace MarkdigExtensions.SyntaxHighlighting
 
 module Say =
     let hello name =

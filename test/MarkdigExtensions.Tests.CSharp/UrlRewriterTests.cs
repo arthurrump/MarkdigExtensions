@@ -1,6 +1,7 @@
+using Markdig;
 using Xunit;
 
-namespace Markdig.Extensions.Tests.CSharp
+namespace MarkdigExtensions.Tests.CSharp
 {
     public class UrlRewriterTests
     {
