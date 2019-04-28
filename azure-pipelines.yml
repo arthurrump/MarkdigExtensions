@@ -1,0 +1,17 @@
+pool:
+  vmImage: 'windows-2019'
+
+variables:
+  buildConfiguration: 'Release'
+
+steps:
+- script: dotnet restore
+- script: dotnet build --configuration $(buildConfiguration)
+- script: dotnet pack --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)
+- task: PublishBuildArtifacts@1
+- script: dotnet test --configuration $(buildConfiguration) --logger trx
+- task: PublishTestResults@2
+  condition: succeededOrFailed()
+  inputs:
+    testRunner: VSTest
+    testResultsFiles: '**/*.trx'
