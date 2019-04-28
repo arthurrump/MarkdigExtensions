@@ -3,7 +3,8 @@
     <Authors>Arthur Rump</Authors>
     <Copyright>Copyright (c) 2019, Arthur Rump</Copyright>
     <RepositoryType>git</RepositoryType>
-    <PackageProjectUrl>https://github.com/arthurrump/Markdig.Extensions</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/arthurrump/MarkdigExtensions</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/arthurrump/MarkdigExtensions</PackageProjectUrl>
     <PackageLicenseExpression>BSD-2-Clause</PackageLicenseExpression>
   </PropertyGroup>
 
