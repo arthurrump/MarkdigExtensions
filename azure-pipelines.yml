@@ -6,10 +6,14 @@ variables:
 
 steps:
 - script: dotnet restore
+  displayName: 'dotnet restore'
 - script: dotnet build --configuration $(buildConfiguration)
+  displayName: 'dotnet build'
 - script: dotnet pack --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)
+  displayName: 'dotnet pack'
 - task: PublishBuildArtifacts@1
 - script: dotnet test --configuration $(buildConfiguration) --logger trx
+  displayName:  'dotnet test'
 - task: PublishTestResults@2
   condition: succeededOrFailed()
   inputs:
