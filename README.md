@@ -1,5 +1,5 @@
 # MarkdigExtensions
-[![Build Status](https://dev.azure.com/arthurrump/Markdig.Extensions/_apis/build/status/CI?branchName=master)](https://dev.azure.com/arthurrump/Markdig.Extensions/_build/latest?definitionId=14&branchName=master)
+[![Build Status](https://dev.azure.com/arthurrump/MarkdigExtensions/_apis/build/status/CI?branchName=master)](https://dev.azure.com/arthurrump/MarkdigExtensions/_build/latest?definitionId=15&branchName=master)
 
 Some useful extensions to the [Markdig](https://github.com/lunet-io/markdig) Markdown processor.
 
