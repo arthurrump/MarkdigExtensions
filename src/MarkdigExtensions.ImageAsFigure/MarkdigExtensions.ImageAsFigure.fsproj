@@ -2,10 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>Markdig extension for rewriting URLs in link and image tags.</Description>
+    <Version>1.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Library.fs" />
+    <Compile Include="ImageAsFigure.fs" />
+    <Compile Include="Extension.fs" />
   </ItemGroup>
 
 </Project>
