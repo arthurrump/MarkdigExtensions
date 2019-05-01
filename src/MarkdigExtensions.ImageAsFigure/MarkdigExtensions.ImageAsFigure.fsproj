@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Description>Markdig extension for rewriting URLs in link and image tags.</Description>
+    <Description>Markdig extension that renders any image inside a figure tag with a figcaption tag containing the title of the image.</Description>
     <Version>1.0.0</Version>
   </PropertyGroup>
 
