@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <Compile Include="ImageAsFigureTests.fs" />
+    <Compile Include="SyntaxHighlightingTests.fs" />
     <Compile Include="UrlRewriterTests.fs" />
     <Compile Include="Runner.fs" />
   </ItemGroup>
