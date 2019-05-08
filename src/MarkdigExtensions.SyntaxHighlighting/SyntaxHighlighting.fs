@@ -1,27 +1,27 @@
 ﻿namespace MarkdigExtensions.SyntaxHighlighting
 
 open ColorCode
-open ColorCode.HTML
+open ColorCode.Styling
 
 open Markdig
-open Markdig.Parsers
 open Markdig.Renderers
 open Markdig.Renderers.Html
 open Markdig.Syntax
-open Markdig.Syntax.Inlines
 
 open System
 
-type HighlightedCodeBlockRenderer() =
+type HighlightedCodeBlockRenderer(style : StyleDictionary) =
     inherit CodeBlockRenderer()
 
     let getContent (block : LeafBlock) = 
         let slice = block.Lines.ToSlice()
         slice.Text.Substring(slice.Start, slice.Length)
 
-    let color language code =
-        let formatter = HtmlFormatter()
+    let color style language code =
+        let formatter = HtmlFormatter(style)
         formatter.GetHtmlString(code, ColorCode.Languages.FindById(language))
+
+    new() = HighlightedCodeBlockRenderer(Styling.StyleDictionary.DefaultLight)
 
     override __.Accept(_, mo : MarkdownObject) = 
         match mo with
@@ -35,7 +35,7 @@ type HighlightedCodeBlockRenderer() =
         match cb with
         | :? FencedCodeBlock as fcb when not (String.IsNullOrEmpty fcb.Info) ->
             renderer
-                .Write(getContent fcb |> color fcb.Info)
+                .Write(getContent fcb |> color style fcb.Info)
                 |> ignore
         | _ -> 
             let r = CodeBlockRenderer()
@@ -43,10 +43,12 @@ type HighlightedCodeBlockRenderer() =
 
 
 /// An extension for Markdig that can rewrite urls for any link
-type SyntaxHighlightingExtension() =
+type SyntaxHighlightingExtension(style : StyleDictionary) =
+    new() = SyntaxHighlightingExtension(StyleDictionary.DefaultLight)
+
     interface IMarkdownExtension with
 
         member __.Setup(_) = ()
 
         member __.Setup(_, renderer) = 
-            renderer.ObjectRenderers.InsertBefore<CodeBlockRenderer>(new HighlightedCodeBlockRenderer()) |> ignore
+            renderer.ObjectRenderers.InsertBefore<CodeBlockRenderer>(new HighlightedCodeBlockRenderer(style)) |> ignore
