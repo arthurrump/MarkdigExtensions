@@ -12,13 +12,14 @@ open System
 
 type HighlightedCodeBlockRenderer(style : StyleDictionary) =
     inherit CodeBlockRenderer()
+    
+    let formatter = HtmlFormatter(style)
 
     let getContent (block : LeafBlock) = 
         let slice = block.Lines.ToSlice()
         slice.Text.Substring(slice.Start, slice.Length)
 
-    let color style language code =
-        let formatter = HtmlFormatter(style)
+    let color language code =
         formatter.GetHtmlString(code, ColorCode.Languages.FindById(language))
 
     new() = HighlightedCodeBlockRenderer(Styling.StyleDictionary.DefaultLight)
@@ -35,7 +36,7 @@ type HighlightedCodeBlockRenderer(style : StyleDictionary) =
         match cb with
         | :? FencedCodeBlock as fcb when not (String.IsNullOrEmpty fcb.Info) ->
             renderer
-                .Write(getContent fcb |> color style fcb.Info)
+                .Write(getContent fcb |> color fcb.Info)
                 |> ignore
         | _ -> 
             let r = CodeBlockRenderer()
