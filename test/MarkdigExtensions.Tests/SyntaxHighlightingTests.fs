@@ -9,7 +9,7 @@ open ColorCode.Styling
 let tests =
     let pipeline = MarkdownPipelineBuilder().UseSyntaxHighlighting().Build()
 
-    testList "SyntaxHighlighting" [
+    testSequencedGroup "Prevent ColorCode multithreading issues" <| testList "SyntaxHighlighting" [
         test "Highlights code" {
             let markdown = "```f#\nprintfn \"Hello, %s!\" \"world\"\n```\n"
             let html = Markdown.ToHtml(markdown, pipeline)
