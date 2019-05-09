@@ -73,6 +73,8 @@ You can choose to only surround an image where a title is provided with a `<figu
 
 ## MarkdigExtensions.SyntaxHighlighting
 
+[![NuGet](https://img.shields.io/nuget/v/MarkdigExtensions.SyntaxHighlighting.svg)](https://www.nuget.org/packages/MarkdigExtensions.SyntaxHighlighting/)
+
 Uses [ColorCode-Universal](https://github.com/WilliamABradley/ColorCode-Universal) to add syntax highlighting to fenced code blocks. Check out their [LanguageId.cs](https://github.com/WilliamABradley/ColorCode-Universal/blob/master/ColorCode.Core/Common/LanguageId.cs) file to get a list of all supported languages, code blocks with an unsupported language or no language specified will be rendered using the standard renderer.
 
 ### Example
