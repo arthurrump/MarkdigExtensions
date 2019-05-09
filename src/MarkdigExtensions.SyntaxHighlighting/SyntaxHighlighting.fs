@@ -10,6 +10,10 @@ open Markdig.Syntax
 
 open System
 
+/// A renderer that will render fenced code blocks with syntax highlighting.
+/// This renderer only accepts fenced code blocks with a language specified for which
+/// a specification is included, so it does not replace the normal <see cref="CodeBlockRenderer"/>, 
+/// but should be included before it.
 type HighlightedCodeBlockRenderer(style : StyleDictionary) =
     inherit CodeBlockRenderer()
     
@@ -43,7 +47,7 @@ type HighlightedCodeBlockRenderer(style : StyleDictionary) =
             base.Write(renderer, cb)
 
 
-/// An extension for Markdig that can rewrite urls for any link
+/// An extension for Markdig that highlights syntax in fenced code blocks
 type SyntaxHighlightingExtension(style : StyleDictionary) =
     new() = SyntaxHighlightingExtension(StyleDictionary.DefaultLight)
 
