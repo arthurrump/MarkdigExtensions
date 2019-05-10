@@ -23,28 +23,19 @@ type HighlightedCodeBlockRenderer(style : StyleDictionary) =
         let slice = block.Lines.ToSlice()
         slice.Text.Substring(slice.Start, slice.Length)
 
-    let color language code =
-        formatter.GetHtmlString(code, ColorCode.Languages.FindById(language))
-
     new() = HighlightedCodeBlockRenderer(Styling.StyleDictionary.DefaultLight)
-
-    override __.Accept(_, mo : MarkdownObject) = 
-        match mo with
-        | :? FencedCodeBlock as fcb ->
-            let lang = fcb.Info.ToLowerInvariant()
-            ColorCode.Languages.All 
-            |> Seq.tryFind (fun l -> l.Id.ToLowerInvariant() = lang || l.HasAlias(lang))
-            |> Option.isSome
-        | _ -> false
 
     override __.Write(renderer : HtmlRenderer, cb : CodeBlock) =
         match cb with
         | :? FencedCodeBlock as fcb when not (String.IsNullOrEmpty fcb.Info) ->
-            renderer
-                .Write(getContent fcb |> color fcb.Info)
-                |> ignore
+            let lang = Languages.FindById(fcb.Info)
+            if lang <> null then
+                let code = getContent fcb
+                let colored = formatter.GetHtmlString(code, lang)
+                renderer.Write(colored) |> ignore
+            else
+                base.Write(renderer, cb)
         | _ -> 
-            let r = CodeBlockRenderer()
             base.Write(renderer, cb)
 
 
@@ -57,4 +48,4 @@ type SyntaxHighlightingExtension(style : StyleDictionary) =
         member __.Setup(_) = ()
 
         member __.Setup(_, renderer) = 
-            renderer.ObjectRenderers.InsertBefore<CodeBlockRenderer>(new HighlightedCodeBlockRenderer(style)) |> ignore
+            renderer.ObjectRenderers.ReplaceOrAdd<CodeBlockRenderer>(new HighlightedCodeBlockRenderer(style)) |> ignore
