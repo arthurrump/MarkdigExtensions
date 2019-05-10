@@ -37,4 +37,19 @@ let tests =
                 "<span style=\"color:#D69D85;\">&quot;world&quot;</span>\r\n</pre></div>"
             Expect.equal html expected "Correct html"
         }
+
+        test "Highlights multiline xml" {
+            let markdown = "```xml\n<MainTag item=\"value\">\n\t<SubTag something=\"\"/>\n</MainTag>\n```\n"
+            let html = Markdown.ToHtml(markdown, pipeline)
+            let expected = 
+                "<div style=\"color:#000000;background-color:#FFFFFF;\"><pre>\r\n" + 
+                "<span style=\"color:#0000FF;\">&lt;</span><span style=\"color:#A31515;\">MainTag</span> " + 
+                "<span style=\"color:#FF0000;\">item</span><span style=\"color:#0000FF;\">=</span>" + 
+                "<span style=\"color:#000000;\">&quot;</span><span style=\"color:#0000FF;\">value</span>" + 
+                "<span style=\"color:#000000;\">&quot;</span><span style=\"color:#0000FF;\">&gt;</span>\n" +
+                "\t&lt;SubTag something=&quot;&quot;/&gt;\n" + 
+                "<span style=\"color:#0000FF;\">&lt;/</span><span style=\"color:#A31515;\">MainTag</span>" + 
+                "<span style=\"color:#0000FF;\">&gt;</span>\r\n</pre></div>"
+            Expect.equal html expected "Correct html"
+        }
     ]

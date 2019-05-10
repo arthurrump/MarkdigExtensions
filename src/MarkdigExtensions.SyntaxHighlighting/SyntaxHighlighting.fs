@@ -31,8 +31,9 @@ type HighlightedCodeBlockRenderer(style : StyleDictionary) =
     override __.Accept(_, mo : MarkdownObject) = 
         match mo with
         | :? FencedCodeBlock as fcb ->
+            let lang = fcb.Info.ToLowerInvariant()
             ColorCode.Languages.All 
-            |> Seq.tryFind (fun l -> l.HasAlias(fcb.Info))
+            |> Seq.tryFind (fun l -> l.Id.ToLowerInvariant() = lang || l.HasAlias(lang))
             |> Option.isSome
         | _ -> false
 
