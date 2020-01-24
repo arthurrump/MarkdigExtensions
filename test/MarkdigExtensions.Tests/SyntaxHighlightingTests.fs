@@ -113,4 +113,52 @@ let tests =
             let expected = "<pre><code>This is a code block with no language\nIt will not be colored\n</code></pre>\n"
             Expect.equal html expected "Correct html"
         }
+
+        test "Highlights code with classes when inlineCss = false" {
+            let markdown = 
+                [ "```f#"
+                  """printfn "Hello, %s!" "world" """
+                  "```" ] |> concatn
+            let pipeline = MarkdownPipelineBuilder().UseSyntaxHighlighting(StyleDictionary.DefaultLight, false).Build()
+            let html = Markdown.ToHtml(markdown, pipeline)
+            let expected = 
+               "<div class=\"FSharp\"><pre>\r\n" +
+               "printfn <span class=\"string\">&quot;Hello, %s!&quot;</span> " + 
+               "<span class=\"string\">&quot;world&quot;</span> \r\n</pre></div>"
+            Expect.equal html expected "Correct html"
+        }
+
+        test "Highlights multiline xml with inlineCss = false" {
+            let markdown = 
+                [ "```xml"
+                  """<MainTag item="value">"""
+                  "\t<SubTag something=\"\"/>"
+                  "</MainTag>"
+                  "```" ] |> concatn
+            let pipeline = MarkdownPipelineBuilder().UseSyntaxHighlighting(StyleDictionary.DefaultLight, false).Build()
+            let html = Markdown.ToHtml(markdown, pipeline)
+            let expected = 
+                "<div class=\"xml\"><pre>\r\n" + 
+                "<span class=\"xmlDelimiter\">&lt;</span><span class=\"xmlName\">MainTag</span> " + 
+                "<span class=\"xmlAttribute\">item</span><span class=\"xmlDelimiter\">=</span>" + 
+                "<span class=\"xmlAttributeQuotes\">&quot;</span><span class=\"xmlAttributeValue\">value</span>" + 
+                "<span class=\"xmlAttributeQuotes\">&quot;</span><span class=\"xmlDelimiter\">&gt;</span>\n" +
+                "\t&lt;SubTag something=&quot;&quot;/&gt;\n<span class=\"xmlDelimiter\">&lt;/</span>" + 
+                "<span class=\"xmlName\">MainTag</span><span class=\"xmlDelimiter\">&gt;</span>\r\n</pre></div>"
+            Expect.equal html expected "Correct html"
+        }
+
+        test "Highlighted with inlineCss = false should give same result for different themes" {
+            let markdown = 
+                [ "```xml"
+                  """<MainTag item="value">"""
+                  "\t<SubTag something=\"\"/>"
+                  "</MainTag>"
+                  "```" ] |> concatn
+            let lightPipeline = MarkdownPipelineBuilder().UseSyntaxHighlighting(StyleDictionary.DefaultLight, false).Build()
+            let lightHtml = Markdown.ToHtml(markdown, lightPipeline)
+            let darkPipeline = MarkdownPipelineBuilder().UseSyntaxHighlighting(StyleDictionary.DefaultDark, false).Build()
+            let darkHtml = Markdown.ToHtml(markdown, darkPipeline)
+            Expect.equal lightHtml darkHtml "Light and dark html are the same"
+        }
     ]
