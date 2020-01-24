@@ -11,9 +11,8 @@ open Markdig.Syntax
 open System
 
 /// A renderer that will render fenced code blocks with syntax highlighting.
-/// This renderer only accepts fenced code blocks with a language specified for which
-/// a specification is included, so it does not replace the normal <see cref="CodeBlockRenderer"/>, 
-/// but should be included before it.
+/// It replaces the default <see cref="CodeBlockRenderer"/>, but it will still use
+/// that renderer for code blocks with unknown languages.
 type HighlightedCodeBlockRenderer(style : StyleDictionary) =
     inherit CodeBlockRenderer()
     
